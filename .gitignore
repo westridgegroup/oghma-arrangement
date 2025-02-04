@@ -1,6 +1,13 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Mac Files
+*.DS_Store
+
+# Terraform Plans
+*.plan
+*.hcl
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
