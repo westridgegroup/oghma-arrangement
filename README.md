@@ -32,6 +32,7 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 ### Vnet Details
 Class B Network starting at: 130.1.0.0/16
 If we need additional networks that talk to one another they would take the next class B 130.2.0.0/16.  An example would be to have one instance of this code for Development and another for production.
+
 #### Subnets
 - Gateway 130.1.0.0/24 
 - Databricks Public
@@ -50,3 +51,6 @@ If we need additional networks that talk to one another they would take the next
  - Logic Apps (For all)
  - VM (one for each vm including all of the resources for the VM)
  - Bastion
+
+ ##### Databricks Configuration
+ - 
