@@ -28,10 +28,21 @@ This repoistory is a complete set of code to stand up an Azure based data platfo
 ## Platform Details
 The Databricks workspace, key vault, storage and logic app are all wrapped in a vnet and do not all for external access directly from the internet.   All resource connectivity is via private endpoints with the except of Fabric which uses VNET Data Gateways.
 
+### Data Storage Accounts
+- Raw
+- Refined
+- Modeled
+- Logs
 
 ### Vnet Details
 Class B Network starting at: 130.1.0.0/16
 If we need additional networks that talk to one another they would take the next class B 130.2.0.0/16.  An example would be to have one instance of this code for Development and another for production.  Each section below describes specific resource configuration.  
+- DDoS Network Protection: Disabled
+- DNS Server: Default
+- Diagnostic Settings:
+    - All Logs
+    - All Metrics
+    - Archive to Storage Account: XXX
 
 #### Subnets
 - Gateway 
