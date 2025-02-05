@@ -35,14 +35,39 @@ If we need additional networks that talk to one another they would take the next
 
 #### Subnets
 - Gateway 
-    - 130.1.0.0/24 
-- Databricks Public 130.1.1.0/24
-- Databricks Private 130.2.0/24
-- Private End Points (Storage and Key Vault) 130.3.0/24
-- Vnet Datagateway 130.4.0.0/24
-- Logic App 130.5.0.0/24
-- VM 130.6.0.0/24
-- Bastion 130.7.0.0/24
+    - CIDR: 130.1.0.0/24
+    - NSG:
+    - Route Table:
+- Databricks Public 
+    - CIDR: 130.1.1.0/24
+    - NSG:
+    - Route Table:
+- Databricks Private 
+    - CIDR: 130.2.0/24
+    - NSG:
+    - Route Table:
+- Private End Points (Storage and Key Vault) 
+    - CIDR: 130.3.0/24
+    - NSG:
+    - Route Table:
+- Vnet Datagateway 
+    - CIDR: 130.4.0.0/24
+    - NSG:
+    - Route Table:
+- Logic App 
+    - CIDR: 130.5.0.0/24
+    - NSG:
+    - Route Table:
+- VM 
+    - CIDR: 130.6.0.0/24
+    - NSG:
+    - Route Table:
+- Bastion 
+    - CIDR: 130.7.0.0/24
+    - NSG:
+    - Route Table:
+
+### NSGs
 
 ### Resource Groups
  - Databricks Public
