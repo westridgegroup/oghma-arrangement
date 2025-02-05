@@ -43,7 +43,7 @@ If we need additional networks that talk to one another they would take the next
 - VM
 - Bastion
 
-#### Resource Groups
+### Resource Groups
  - Databricks Public
  - Databricks Private
  - Data Storage Accounts (Raw, Refined, Modeled)
@@ -52,5 +52,5 @@ If we need additional networks that talk to one another they would take the next
  - VM (one for each vm including all of the resources for the VM)
  - Bastion
 
- ##### Databricks Configuration
+ ### Databricks Configuration
  - 
