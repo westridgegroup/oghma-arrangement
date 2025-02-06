@@ -14,4 +14,24 @@ resource "azurerm_storage_account" "logging" {
   local_user_enabled = false
   allow_nested_items_to_be_public = false
 
+  network_rules {
+    default_action             = "Deny"
+    ip_rules                   = ["108.4.72.254"]
+  }
+
+}
+
+
+resource "azurerm_private_endpoint" "logging" {
+  name                = "${local.name}-storage-logging-endpoint"
+  location            = azurerm_resource_group.logging.location
+  resource_group_name = azurerm_resource_group.logging.name
+  subnet_id           = azurerm_subnet.endpoints.id
+
+  private_service_connection {
+    name                           = "${local.name}-storage-logging-privateserviceconnection"
+    private_connection_resource_id = azurerm_storage_account.logging.id
+    subresource_names = ["blob"]
+    is_manual_connection           = false
+  }
 }
