@@ -32,7 +32,17 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 - Raw
 - Refined
 - Modeled
-- Logs
+- Logging
+    - account_tier = "Premium"
+    - account_replication_type = "GRS"
+    - account_kind = "BlockBlobStorage"
+    - access_tier = "Hot"
+    - https_traffic_only_enableed = true
+    - shared_access_key_enabled = false
+    - public_network_access_enabled = false
+    - default_to_oauth_authentication = true
+    - is_hns_enabled = false 
+    - local_user_enabled = false
 
 ### Vnet Details
 Class B Network starting at: 130.1.0.0/16

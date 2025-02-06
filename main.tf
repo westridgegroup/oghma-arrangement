@@ -9,3 +9,9 @@ resource "azurerm_resource_group" "vnet" {
   location = var.location
   tags     = local.main_tags
 }
+
+resource "azurerm_resource_group" "logging" {
+  name = "${local.name}-logging-rg"
+  location = var.location
+  tags = local.main_tags
+}
