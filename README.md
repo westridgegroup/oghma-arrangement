@@ -32,7 +32,7 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 - Raw
     - This storage account is used for Diagnostic Logging accross all resources.  The idea is that Databricks will used to investigate the logs.
     - Settings:
-        - account_tier = "Premium"
+        - account_tier = "Standard"
         - account_replication_type = "GRS"
         - account_kind = "BlockBlobStorage"
         - access_tier = N/A
@@ -49,7 +49,7 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 - Logging
     - This storage account is used for Diagnostic Logging accross all resources.  The idea is that Databricks will used to investigate the logs.
     - Settings:
-        - account_tier = "Premium"
+        - account_tier = "Standard"
         - account_replication_type = "LRS"
         - account_kind = "BlockBlobStorage"
         - access_tier = N/A

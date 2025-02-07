@@ -5,7 +5,7 @@ resource "azurerm_storage_account" "logging" {
   name                     = "${local.name2}logging"
   resource_group_name      = azurerm_resource_group.logging.name
   location                 = azurerm_resource_group.logging.location
-  account_tier             = "Premium"
+  account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind = "BlockBlobStorage"
   #access_tier = "Hot"
@@ -45,8 +45,8 @@ resource "azurerm_storage_account" "raw" {
   name                     = "${local.name2}raw"
   resource_group_name      = azurerm_resource_group.raw.name
   location                 = azurerm_resource_group.raw.location
-  account_tier             = "Premium"
-  account_replication_type = "LRS"
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
   account_kind = "BlockBlobStorage"
   #access_tier = "Hot"
   https_traffic_only_enabled = true
