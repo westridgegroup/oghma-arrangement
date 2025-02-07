@@ -15,3 +15,9 @@ resource "azurerm_resource_group" "logging" {
   location = var.location
   tags = local.main_tags
 }
+
+resource "azurerm_resource_group" "storage" {
+  name = "${local.name}-storage-rg"
+  location = var.location
+  tags = local.main_tags
+}

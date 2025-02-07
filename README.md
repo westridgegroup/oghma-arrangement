@@ -30,6 +30,20 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 
 ### Data Storage Accounts
 - Raw
+    - This storage account is used for Diagnostic Logging accross all resources.  The idea is that Databricks will used to investigate the logs.
+    - Settings:
+        - account_tier = "Premium"
+        - account_replication_type = "GRS"
+        - account_kind = "BlockBlobStorage"
+        - access_tier = N/A
+        - https_traffic_only_enableed = true
+        - shared_access_key_enabled = false
+        - public_network_access_enabled = false
+        - default_to_oauth_authentication = true
+        - is_hns_enabled = false 
+        - local_user_enabled = false
+        - allow_nested_items_to_be_public = false
+    - Private Endpoint for Blob connected to the Private Endpoint subnet
 - Refined
 - Modeled
 - Logging
@@ -95,13 +109,15 @@ If we need additional networks that talk to one another they would take the next
 ### NSGs
 
 ### Resource Groups
- - Databricks Public
- - Databricks Private
- - Data Storage Accounts (Raw, Refined, Modeled)
- - Key Vaults (for all)
- - Logic Apps (For all)
- - VM (one for each vm including all of the resources for the VM)
- - Bastion
+- Logging resources: logging-rg
+- Networking resources: vnet-rg
+- Databricks Public
+- Databricks Private
+- Data Storage Accounts (Raw, Refined, Modeled): storage-rg
+- Key Vaults (for all)
+- Logic Apps (For all)
+- VM (one for each vm including all of the resources for the VM)
+- Bastion
 
  ### Databricks Configuration
  - 
