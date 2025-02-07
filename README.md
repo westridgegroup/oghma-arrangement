@@ -113,7 +113,7 @@ If we need additional networks that talk to one another they would take the next
 - Networking resources: vnet-rg
 - Databricks Public
 - Databricks Private
-- Data Storage Accounts (Raw, Refined, Modeled): storage-rg
+- Three seperate storage account rgs: raw-rg, refined-rg, modeled-rg
 - Key Vaults (for all)
 - Logic Apps (For all)
 - VM (one for each vm including all of the resources for the VM)

@@ -43,8 +43,8 @@ resource "azurerm_private_endpoint" "logging" {
 /*******************/
 resource "azurerm_storage_account" "raw" {
   name                     = "${local.name2}raw"
-  resource_group_name      = azurerm_resource_group.storage.name
-  location                 = azurerm_resource_group.storage.location
+  resource_group_name      = azurerm_resource_group.raw.name
+  location                 = azurerm_resource_group.raw.location
   account_tier             = "Premium"
   account_replication_type = "LRS"
   account_kind = "BlockBlobStorage"
@@ -64,15 +64,15 @@ resource "azurerm_storage_account" "raw" {
 
 }
 
-resource "azurerm_private_endpoint" "logging" {
-  name                = "${local.name}-storage-logging-endpoint"
-  location            = azurerm_resource_group.logging.location
-  resource_group_name = azurerm_resource_group.logging.name
+resource "azurerm_private_endpoint" "raw" {
+  name                = "${local.name}-storage-raw-endpoint"
+  location            = azurerm_resource_group.raw.location
+  resource_group_name = azurerm_resource_group.raw.name
   subnet_id           = azurerm_subnet.endpoints.id
 
   private_service_connection {
-    name                           = "${local.name}-storage-logging-privateserviceconnection"
-    private_connection_resource_id = azurerm_storage_account.logging.id
+    name                           = "${local.name}-storage-raw-privateserviceconnection"
+    private_connection_resource_id = azurerm_storage_account.raw.id
     subresource_names = ["blob"]
     is_manual_connection           = false
   }
