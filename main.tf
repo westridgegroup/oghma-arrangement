@@ -21,3 +21,9 @@ resource "azurerm_resource_group" "raw" {
   location = var.location
   tags = local.main_tags
 }
+
+resource "azurerm_resource_group" "refined" {
+  name = "${local.name}-refined-rg"
+  location = var.location
+  tags = local.main_tags
+}

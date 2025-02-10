@@ -30,22 +30,51 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
 
 ### Data Storage Accounts
 - Raw
-    - This storage account is used for Diagnostic Logging accross all resources.  The idea is that Databricks will used to investigate the logs.
+    - This storage account is used to hold raw data.  The idea is that everything can be rebuilt from this storage account.  Because of that reason we use GRS.  Since this storage account will be used to rebuild data objects from scratch were are intending to not delete data from this storage account.  This causes us to use BlobStorage as well at the Standard tier to help with cost control.  
     - Settings:
         - account_tier = "Standard"
         - account_replication_type = "GRS"
+        - account_kind = "BlobStorage"
+        - access_tier = N/A
+        - https_traffic_only_enableed = true
+        - shared_access_key_enabled = false
+        - public_network_access_enabled = false
+        - default_to_oauth_authentication = true
+        - is_hns_enabled = true 
+        - local_user_enabled = false
+        - allow_nested_items_to_be_public = false
+    - Private Endpoint for Blob connected to the Private Endpoint subnet
+- Refined
+    - This storage account is used to hold data that has been refined from raw.  This data will be accessed frequently and potentially by end user reporting.   For faster performance BlockBlobStorage at the Premium tier has been choosen for better performanc than what was used on the Raw Storage layer.  LRS has been choosen over GRS as we should be able to rebuild everything from Raw in necessary so LRS provides enough protection from data loss.  Lastly the hierarchial namespace is used to allow for easier managment of the data from allowing folders.  
+    - Settings:
+        - account_tier = "Premium"
+        - account_replication_type = "LRS"
         - account_kind = "BlockBlobStorage"
         - access_tier = N/A
         - https_traffic_only_enableed = true
         - shared_access_key_enabled = false
         - public_network_access_enabled = false
         - default_to_oauth_authentication = true
-        - is_hns_enabled = false 
+        - is_hns_enabled = true 
         - local_user_enabled = false
         - allow_nested_items_to_be_public = false
     - Private Endpoint for Blob connected to the Private Endpoint subnet
-- Refined
 - Modeled
+    - This storage account is similar to the Refined storage account for the same reasons.  The only difference is that this storage account is data in layer is expected to be seen and used by the end uses applications.  This storage account needs to be 
+    - Settings:
+        - account_tier = "Premium"
+        - account_replication_type = "LRS"
+        - account_kind = "BlockBlobStorage"
+        - access_tier = N/A
+        - https_traffic_only_enableed = true
+        - shared_access_key_enabled = false
+        - public_network_access_enabled = false
+        - default_to_oauth_authentication = true
+        - is_hns_enabled = true 
+        - local_user_enabled = false
+        - allow_nested_items_to_be_public = false
+    - Private Endpoint for Blob connected to the Private Endpoint subnet
+-   
 - Logging
     - This storage account is used for Diagnostic Logging accross all resources.  The idea is that Databricks will used to investigate the logs.
     - Settings:
