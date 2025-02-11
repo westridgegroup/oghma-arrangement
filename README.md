@@ -1,16 +1,17 @@
 # oghma-arrangement
-Terraform for an Azure based data platform
+Terraform for an Azure based Analytics and Reporting Platform
 
 ## Overivew
-This repoistory is a complete set of code to stand up an Azure based data platform.  This platform allows for both batch and realtime processing of data.  The platform supports reporting, analytics, and machine learning.  The platform is deployed in a way that encapsulates and secures the resources making it accetable to the most robust security requirments.
+This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics.
 
-## Major Platform Componenets
-1. Databricks
-2. Azure Storage
-3. Logic App
-4. Web Apps
+### Conceptual Diagram
+1. Logic apps identifies a new email grabbing the email identifiers and that of any attachments
+2. Logic apps places the email metadata, body, and attachments in the raw storage account
+3. Databricks processes new emails as they come in including OCR of attachments and LLM data extraction saving the processed information as relational tables
+4. An email acknolwedment as inital communication is sent back to the email sender using logica apps
+5. Additional reporting overtop of the Databicks Unity Catlog using Azure Web Apps and PowerBI.com
 
-![oghma-arragement conceptual diagram](https://lucid.app/publicSegments/view/55ef4dd6-a3af-4b4e-a2d9-61ff2bb5ad27/image.png , "conceptual diagram)
+![oghma-arragement conceptual diagram](./wrg-analytics-conceptual.png)
 
 ## Getting Started
 1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrg-terraform-azure-bootstrap) project's TerraformAzureBootstrap.sh script to exist.	
