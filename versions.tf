@@ -11,7 +11,8 @@ terraform {
     }
   }
 
-  required_version = ">= 1.10.5"
+  #open tofu version
+  required_version = ">= 1.9.0"
 }
 
 

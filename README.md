@@ -1,5 +1,5 @@
 # oghma-arrangement
-Terraform for an Azure based Analytics and Reporting Platform
+OpenTofu for an Azure based Analytics and Reporting Platform
 
 ## Overivew
 This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics.
@@ -14,15 +14,17 @@ This repository is a complete set of code to stand up an Azure based Analytics a
 ![oghma-arragement conceptual diagram](./wrg-analytics-conceptual.png)
 
 ## Getting Started
-1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrg-terraform-azure-bootstrap) project's TerraformAzureBootstrap.sh script to exist.	
+1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrgcli) project's OpenTofuAzureBootstrap.sh script to exist.	
 2. From bash shell: az login (make sure you are in the correct subscription)
-3. From bash shell: source ../wrg-terraform-azure-bootstrap/TerraformAzureBootstrap.sh 
-4. From bash shell: terraform_setup ./env/dev.tfvars
-4. From bash shell: terraform_plan 	
-5. From bash shell: terrform_apply 
+3. From bash shell: source ./wrgcli.sh 
+4. From bash shell: tofu_setup ./env/dev.tfvars
+4. From bash shell: tofu_plan 	
+5. From bash shell: tofu_apply 
 
-##### Notes: This project follows the standard West Ridge Group terraform famework, state container name and state key information is in the tfvars file. 
-##### Notes: The user_groups variable is read at execution time to populate the access control policy
+### Notes: 
+This project follows the standard West Ridge Group OpenTofu famework, state container name and state key information is in the tfvars file. \
+The user_groups variable is read at execution time to populate the access control policy \
+[OpenTofu](https://opentofu.org) open source fork of Terraform, we switch to OpenTofu due to the [Terraform licensing change](https://www.hashicorp.com/en/license-faq) in August 10th of 2023.
 
 ## Platform Details
 The Databricks workspace, key vault, storage and logic app are all wrapped in a vnet and do not all for external access directly from the internet.   All resource connectivity is via private endpoints with the except of Fabric which uses VNET Data Gateways.
@@ -33,11 +35,11 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
     - Settings:
         - account_tier = "Standard"
         - account_replication_type = "GRS"
-        - account_kind = "BlobStorage"
-        - access_tier = N/A
+        - account_kind = "StorageV2"
+        - access_tier = Hot
         - https_traffic_only_enableed = true
         - shared_access_key_enabled = false
-        - public_network_access_enabled = false
+        - public_network_access_enabled = true # But restricted to a set of IPs
         - default_to_oauth_authentication = true
         - is_hns_enabled = true 
         - local_user_enabled = false
@@ -52,7 +54,7 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
         - access_tier = N/A
         - https_traffic_only_enableed = true
         - shared_access_key_enabled = false
-        - public_network_access_enabled = false
+        - public_network_access_enabled = true # But restricted to a set of IPs
         - default_to_oauth_authentication = true
         - is_hns_enabled = true 
         - local_user_enabled = false
@@ -67,7 +69,7 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
         - access_tier = N/A
         - https_traffic_only_enableed = true
         - shared_access_key_enabled = false
-        - public_network_access_enabled = false
+        - public_network_access_enabled = true # But restricted to a set of IPs
         - default_to_oauth_authentication = true
         - is_hns_enabled = true 
         - local_user_enabled = false
@@ -79,11 +81,11 @@ The Databricks workspace, key vault, storage and logic app are all wrapped in a 
     - Settings:
         - account_tier = "Standard"
         - account_replication_type = "LRS"
-        - account_kind = "BlockBlobStorage"
+        - account_kind = "StorageV2"
         - access_tier = N/A
         - https_traffic_only_enableed = true
         - shared_access_key_enabled = false
-        - public_network_access_enabled = false
+        - public_network_access_enabled = true # But restricted to a set of IPs
         - default_to_oauth_authentication = true
         - is_hns_enabled = false 
         - local_user_enabled = false
