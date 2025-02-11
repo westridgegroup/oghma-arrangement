@@ -4,15 +4,13 @@ Terraform for an Azure based data platform
 ## Overivew
 This repoistory is a complete set of code to stand up an Azure based data platform.  This platform allows for both batch and realtime processing of data.  The platform supports reporting, analytics, and machine learning.  The platform is deployed in a way that encapsulates and secures the resources making it accetable to the most robust security requirments.
 
-## Platform Componenets
+## Major Platform Componenets
 1. Databricks
-2. Key Vault
-3. Azure Storage
-4. Azure Fabric
-5. Logic App
-6. VMs
-7. Bastion
+2. Azure Storage
+3. Logic App
+4. Web Apps
 
+![oghma-arragement conceptual diagram](https://lucid.app/publicSegments/view/55ef4dd6-a3af-4b4e-a2d9-61ff2bb5ad27/image.png , "conceptual diagram)
 
 ## Getting Started
 1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrg-terraform-azure-bootstrap) project's TerraformAzureBootstrap.sh script to exist.	
