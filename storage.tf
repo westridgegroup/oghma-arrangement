@@ -7,11 +7,11 @@ resource "azurerm_storage_account" "logging" {
   location                 = azurerm_resource_group.logging.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  account_kind = "BlobStorage"
+  account_kind = "StorageV2"
   access_tier = "Hot"
   https_traffic_only_enabled = true
   shared_access_key_enabled = true # Does not match design
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   default_to_oauth_authentication = true
   is_hns_enabled = false 
   local_user_enabled = false
@@ -48,11 +48,11 @@ resource "azurerm_storage_account" "raw" {
   location                 = azurerm_resource_group.raw.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
-  account_kind = "BlobStorage"
+  account_kind = "StorageV2"
   access_tier = "Hot"
   https_traffic_only_enabled = true
   shared_access_key_enabled = true # Does not match design
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   default_to_oauth_authentication = true
   is_hns_enabled = true 
   local_user_enabled = false
@@ -93,7 +93,7 @@ resource "azurerm_storage_account" "refined" {
   #access_tier = "Hot"
   https_traffic_only_enabled = true
   shared_access_key_enabled = true # Does not match design
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   default_to_oauth_authentication = true
   is_hns_enabled = true 
   local_user_enabled = false
