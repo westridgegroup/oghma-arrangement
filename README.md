@@ -14,7 +14,7 @@ This repository is a complete set of code to stand up an Azure based Analytics a
 ![oghma-arragement conceptual diagram](./wrg-analytics-conceptual.png)
 
 ## Getting Started
-1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrgcli) project's OpenTofuAzureBootstrap.sh script to exist.	
+1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrgcli) project's OpenTofuAzureBootstrap.sh script to exist.	The script has been imported locally to this repo for now.
 2. From bash shell: az login (make sure you are in the correct subscription)
 3. From bash shell: source ./wrgcli.sh 
 4. From bash shell: tofu_setup ./env/dev.tfvars
@@ -150,4 +150,7 @@ If we need additional networks that talk to one another they would take the next
 - Bastion
 
  ### Databricks Configuration
- - 
+ - Make it secure
+
+
+ 

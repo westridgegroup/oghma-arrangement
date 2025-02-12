@@ -27,3 +27,10 @@ resource "azurerm_resource_group" "refined" {
   location = var.location
   tags = local.main_tags
 }
+
+resource "azurerm_resource_group" "databricks" {
+  name = "${local.name}-databricks-rg"
+  location = var.location
+  tags = local.main_tags
+}
+
