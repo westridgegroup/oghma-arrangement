@@ -1,8 +1,7 @@
 # oghma-arrangement & cuddly-octo-invention
 This is a joint documentation for the infrastructure and the initial solution that sits on top of it.  There are two code repositories the oghma-arragment and the cuddly-octo-invention that come together to form a complete solution.  The idea is that the platform represented and codified in the oghma-arrangement can be utilized for additional solutions going forward.  The cuddly-coto-invention is the email intake based analytics solution that sits on top of the platform.
-[oghma-arrangement](https://github.com/westridgegroup/oghma-arrangement)
-[cuddly-coto-invention](https://github.com/westridgegroup/cuddly-octo-invention)
-
+- [oghma-arrangement](https://github.com/westridgegroup/oghma-arrangement)
+- [cuddly-coto-invention](https://github.com/westridgegroup/cuddly-octo-invention)
 
 ## Conceptual Solution
 There are many ways to build a solution but they influenced by the platform they ride upon.  In the cloud the application team has much more freedom then in a traditional data center as the platform stack is very easy to switch out so solutions are more more free to come up with designs that vary in platform then they used to.  Below is a conceptual diagram that details out the major steps in the cuddly-cot-invention email intake based analytics solution at the top in the process box followed by three different platform stacks that could support the solution.  The Champion solution design is the what is produced by the oghma-arrangement OpenTofu code.  The other two Challenger solution designs are options that we did not pursue.
