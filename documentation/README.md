@@ -30,7 +30,7 @@ To forecast a cost for running this solution we used the following assumptions a
 - The solution would receive reporting requests 24 x 7
 - Any compute resource that could respond with on demand resources would assume 80 hours of processing a month, otherwise 24x7 is required.
 
-#### Champion Solution forecast: $2500/month
+#### Champion Solution #1 forecast: $2500/month
 - Same Raw Storage Costs across all 3 solutions ~$10/month
 - Refined and Modeled Storage ~$20/month
 - Same App Service Costs in Champion and Challenger #1 ~$200/month
@@ -41,7 +41,7 @@ To forecast a cost for running this solution we used the following assumptions a
 - Logic Apps 1,000 standard calls for outbound email  ~$20/month
 - App Service running 24x7 ~$100/month
 - [Details](./ExportedEstimate_1.pdf)
-#### Challenger Solution #1 Forecast Cost: $1200/month
+#### Challenger Solution #2 Forecast Cost: $1200/month
 - Same Raw Storage Costs across all 3 solutions ~$10/month
 - Same App Service Costs in Champion and Challenger #1
 - Logic Apps 10,000 standard calls for Email data collection
@@ -53,7 +53,14 @@ To forecast a cost for running this solution we used the following assumptions a
 - Azure AI Language 20,000 calls for LLM data extraction across all three Summarization, Sentiment Analysis, & Customer Questions
 - Azure SQL running 24x7 2vCore very small
 - Details
-
-#### Challenger Solution #2 Forecast Cost:
-- Same Raw Storage Costs across all 3 solutions
+#### Challenger Solution #3 Forecast Cost: ~$2700
+- Same Raw Storage Costs across all 3 solutions ~$10/month
+- Refined and Modeled Storage ~$20/month
+- Same App Service Costs in Champion and Challenger #1 ~$200/month
+- Databricks SQL running 80 hours to support expected queries from reporting ~$700/month
+- Databricks Job Cluster running 80 hours to support expected analytics processing ~200/month
+- Databricks Hosted Model Calls - 20,000 = 20000 calls *5000tokens/1,000,000=1400 DBUs ~$800/month
+- Logic Apps 10,000 standard calls for Email data collection ~$180/month
+- Logic Apps 1,000 standard calls for outbound email  ~$20/month
+- Databricks App 24x7 ~$300
 - Details
