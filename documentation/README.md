@@ -17,8 +17,7 @@ There are many ways to build a solution but they influenced by the platform they
 3. App Services is responsible for presenting a Portal interface for the end user, mainly related to reporting and surfacing analytics information.  Links to the App Service pages would be included in the email sent back to the original sender by Logic Apps.
 
 ### Details on Champion solution (Databricks Heavy)
-1. Logic Apps is responsible for retrieving emails, and writing the information including attachments to raw storage.  On the back end of the process Logic Apps is responsible for sending an email response to the original sender
-2. Databricks is responsible for organizing the email metadata saving it to tables.  Using LLMs to extract information from the body of the email.  OCRing the attachments, using LLMs and regex to extract information from those documents as well as tabularizing all of that information into tables for further reporting.  Lastly it formulates an email response and calls a logic app to return an email to the original sender. Databricks Apps is responsible for presenting a Portal interface for the end user, mainly related to reporting and surfacing analytics information.  Links to the Databricks App would be included in the email sent back to the original sender by Logic Apps.
+1. Databricks does it all.  Databricks is responsible for retrieving emails, and writing the information including attachments to raw storage.  On the back end of the process Databricks is responsible for sending an email response to the original sender.  Databricks is responsible for organizing the email metadata saving it to tables.  Using LLMs to extract information from the body of the email.  OCRing the attachments, using LLMs and regex to extract information from those documents as well as tabularizing all of that information into tables for further reporting.  Lastly it formulates an email response and calls a logic app to return an email to the original sender. Databricks Apps is responsible for presenting a Portal interface for the end user, mainly related to reporting and surfacing analytics information.  Links to the Databricks App would be included in the email sent back to the original sender by Logic Apps.
 
 
 
@@ -30,7 +29,7 @@ To forecast a cost for running this solution we used the following assumptions a
 - The solution would receive reporting requests 24 x 7
 - Any compute resource that could respond with on demand resources would assume 80 hours of processing a month, otherwise 24x7 is required.
 
-#### Champion Solution #1 forecast: $2500/month
+#### Champion Solution #1 forecast: $2300/month
 - Same Raw Storage Costs across all 3 solutions ~$10/month
 - Refined and Modeled Storage ~$20/month
 - Same App Service Costs in Champion and Challenger #1 ~$200/month
@@ -53,14 +52,11 @@ To forecast a cost for running this solution we used the following assumptions a
 - Azure AI Language 20,000 calls for LLM data extraction across all three Summarization, Sentiment Analysis, & Customer Questions
 - Azure SQL running 24x7 2vCore very small
 - Details
-#### Challenger Solution #3 Forecast Cost: ~$2700
+#### Challenger Solution #3 Forecast Cost: ~$2600
 - Same Raw Storage Costs across all 3 solutions ~$10/month
 - Refined and Modeled Storage ~$20/month
-- Same App Service Costs in Champion and Challenger #1 ~$200/month
 - Databricks SQL running 80 hours to support expected queries from reporting ~$700/month
-- Databricks Job Cluster running 80 hours to support expected analytics processing ~200/month
+- Databricks Job Cluster running 320 hours to support expected analytics processing ~$800/month
 - Databricks Hosted Model Calls - 20,000 = 20000 calls *5000tokens/1,000,000=1400 DBUs ~$800/month
-- Logic Apps 10,000 standard calls for Email data collection ~$180/month
-- Logic Apps 1,000 standard calls for outbound email  ~$20/month
 - Databricks App 24x7 ~$300
 - Details
