@@ -7,7 +7,8 @@ resource "azurerm_databricks_workspace" "main" {
   location            = azurerm_resource_group.databricks.location
   sku                 = "premium"
   customer_managed_key_enabled = false # Does not match design
-  public_network_access_enabled = true # Does not match design
+  public_network_access_enabled = false # Does not match design
+  network_security_group_rules_required = "NoAzureDatabricksRules"
 #  enhanced_security_compliance {
 #    automatic_cluster_update_enabled = false #Does not match design
 #    compliance_security_profile_enabled = false #Does not match design

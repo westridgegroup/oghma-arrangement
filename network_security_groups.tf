@@ -68,7 +68,7 @@ resource "azurerm_network_security_group" "databricks_private" {
         destination_port_ranges                    = []
         direction                                  = "Outbound"
         name                                       = "Microsoft.Databricks-workspaces_UseOnly_databricks-worker-to-eventhub"
-        priority                                   = 104
+        priority                                   = 103
         protocol                                   = "Tcp"
         source_address_prefix                      = "VirtualNetwork"
         source_address_prefixes                    = []
@@ -122,7 +122,7 @@ resource "azurerm_network_security_group" "databricks_private" {
         destination_port_ranges                    = []
         direction                                  = "Outbound"
         name                                       = "Microsoft.Databricks-workspaces_UseOnly_databricks-worker-to-sql"
-        priority                                   = 102
+        priority                                   = 101
         protocol                                   = "Tcp"
         source_address_prefix                      = "VirtualNetwork"
         source_address_prefixes                    = []
@@ -140,14 +140,14 @@ resource "azurerm_network_security_group" "databricks_private" {
         destination_port_ranges                    = []
         direction                                  = "Outbound"
         name                                       = "Microsoft.Databricks-workspaces_UseOnly_databricks-worker-to-storage"
-        priority                                   = 103
+        priority                                   = 102
         protocol                                   = "Tcp"
         source_address_prefix                      = "VirtualNetwork"
         source_address_prefixes                    = []
         source_application_security_group_ids      = []
         source_port_range                          = "*"
         source_port_ranges                         = []
-    },
+    },/*
     {
         access                                     = "Allow"
         description                                = "Required for workers communication with Databricks control plane."
@@ -169,7 +169,7 @@ resource "azurerm_network_security_group" "databricks_private" {
         source_application_security_group_ids      = []
         source_port_range                          = "*"
         source_port_ranges                         = []
-    }]
+    }*/]
 }
 
 resource "azurerm_subnet_network_security_group_association" "databricks_private" {
