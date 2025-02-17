@@ -25,3 +25,123 @@ resource "azurerm_databricks_workspace" "main" {
   }
   tags = local.main_tags
 }
+
+
+resource "azurerm_monitor_diagnostic_setting" "databricks_main" {
+  name               = "${local.name}-databricks_logging"
+  target_resource_id = azurerm_databricks_workspace.main.id
+  storage_account_id = azurerm_storage_account.logging.id
+  enabled_log {
+    category = "accounts"
+  }
+  #enabled_log {
+  #  category = "aibiGenie"
+  #}
+  enabled_log {
+    category = "clusters"
+  }
+#  enabled_log {
+#    category = "clusterpolicies"
+#  }
+  enabled_log {
+    category = "dashboards"
+  }
+  enabled_log {
+    category = "databrickssql"
+  }
+  /*
+  enabled_log {
+    category = "dataMonitoring"
+  }
+  enabled_log {
+    category = "dbfs"
+  }
+  enabled_log {
+    category = "deltaPipelines"
+  }
+  enabled_log {
+    category = "featureStore"
+  }
+  enabled_log {
+    category = "filesystem"
+  }
+  enabled_log {
+    category = "genie"
+  }
+  enabled_log {
+    category = "gitCredentials"
+  }
+  enabled_log {
+    category = "globalInitScripts"
+  }
+#  enabled_log {
+#    category = "groups"
+#  }
+  enabled_log {
+    category = "iamRole"
+  }
+  enabled_log {
+    category = "ingenstion"
+  }
+  enabled_log {
+    category = "instancePools"
+  }
+  enabled_log {
+    category = "jobs"
+  }
+  enabled_log {
+    category = "lineageTracking"
+  }
+  enabled_log {
+    category = "marketplaceConsumer"
+  }
+  enabled_log {
+    category = "marketplaceProvider"
+  }
+  enabled_log {
+    category = "mlflowAcledArtifact"
+  }
+  enabled_log {
+    category = "mlflowExperiment"
+  }
+  enabled_log {
+    category = "modelRegistry"
+  }
+  enabled_log {
+    category = "notebook"
+  }
+  enabled_log {
+    category = "partnerConnect"
+  }
+  enabled_log {
+    category = "predictiveOptimization"
+  }
+  enabled_log {
+    category = "RemoteHistoryService"
+  }
+  enabled_log {
+    category = "repos"
+  }
+  enabled_log {
+    category = "secrets"
+  }
+  enabled_log {
+    category = "serverlessRealTimeInference"
+  }
+  enabled_log {
+    category = "sqlPermissions"
+  }
+  enabled_log {
+    category = "ssh"
+  }
+  #enabled_log {
+  #  category = "vectorsearch"
+  #}
+  enabled_log {
+    category = "webTerminal"
+  }
+  enabled_log {
+    category = "workspace"
+  }
+*/
+}
