@@ -13,8 +13,13 @@ resource "azurerm_databricks_workspace" "main" {
 #    compliance_security_profile_enabled = false #Does not match design
 #   }
   custom_parameters {
-    storage_account_name = "${local.name2}databricksdefault"
-    storage_account_sku_name = "Premium_LRS"
+    storage_account_name = "${local.name2}dbxworkspace"
+    storage_account_sku_name = "Standard_GRS"
+    public_subnet_name= azurerm_subnet.databricks_external.name
+    private_subnet_name = azurerm_subnet.databricks_internal.name
+    virtual_network_id = azurerm_virtual_network.primary.id
+    public_subnet_network_security_group_association_id = azurerm_network_security_group.databricks_public.id
+    private_subnet_network_security_group_association_id = azurerm_network_security_group.databricks_private.id
   }
   tags = local.main_tags
 }

@@ -23,6 +23,18 @@ resource "azurerm_subnet" "databricks_internal" {
   virtual_network_name = azurerm_virtual_network.primary.name
   address_prefixes     = ["10.30.1.0/24"]
   private_link_service_network_policies_enabled = true
+
+  delegation {
+    name = "Microsoft.Databricks/workspaces"
+    service_delegation {
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
+        "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
+        ]
+      name    = "Microsoft.Databricks/workspaces"
+    }
+  }
 }
 
 resource "azurerm_subnet" "databricks_external" {
@@ -31,4 +43,18 @@ resource "azurerm_subnet" "databricks_external" {
   virtual_network_name = azurerm_virtual_network.primary.name
   address_prefixes     = ["10.30.2.0/24"]
   private_link_service_network_policies_enabled = true
+
+  delegation {
+    name = "Microsoft.Databricks/workspaces"
+    service_delegation {
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
+        "Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action",
+        ]
+      name    = "Microsoft.Databricks/workspaces"
+    }
+  }
 }
+
+
