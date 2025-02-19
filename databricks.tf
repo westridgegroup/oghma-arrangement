@@ -49,7 +49,7 @@ resource "azurerm_monitor_diagnostic_setting" "databricks_main" {
   enabled_log {
     category = "databrickssql"
   }
-  /*
+  
   enabled_log {
     category = "dataMonitoring"
   }
@@ -62,7 +62,7 @@ resource "azurerm_monitor_diagnostic_setting" "databricks_main" {
   enabled_log {
     category = "featureStore"
   }
-  enabled_log {
+  /*enabled_log {
     category = "filesystem"
   }
   enabled_log {
