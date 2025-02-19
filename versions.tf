@@ -6,9 +6,14 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">=4.0.0"
     }
-   azapi = {
+    azapi = {
       source = "azure/azapi"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.6.3"
+    }
+
   }
 
   #open tofu version

@@ -4,6 +4,13 @@ locals {
   name2 = replace(local.name,"-","")
 }
 
+resource "random_string" "storage" {
+  length           = 10
+  special          = false
+  lower= true
+  upper = false
+}
+
 resource "azurerm_resource_group" "vnet" {
   name     = "${local.name}-vnet-rg"
   location = var.location

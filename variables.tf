@@ -20,7 +20,7 @@ variable "env" {
 
 variable "admin" {
   type        = list
-  description = "admin for the Fabric capacity"
+  description = "overall resource administrator, this is not owner at the subscription level, but specific RBACs at the RG level"
 }
 
 variable "sku" {

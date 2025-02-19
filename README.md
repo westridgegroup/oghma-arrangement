@@ -14,12 +14,16 @@ This repository is a complete set of code to stand up an Azure based Analytics a
 ![oghma-arragement conceptual diagram](./wrg-analytics-conceptual.png)
 
 ## Getting Started
-1. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrgcli) project's OpenTofuAzureBootstrap.sh script to exist.	The script has been imported locally to this repo for now.
-2. From bash shell: az login (make sure you are in the correct subscription)
-3. From bash shell: source ./wrgcli.sh 
-4. From bash shell: tofu_setup ./env/dev.tfvars
-4. From bash shell: tofu_plan 	
-5. From bash shell: tofu_apply 
+1. Clone this Repoistory
+2. Customize the the following values in in the *.tfvars files found in the ./env directory:
+    - Set the Admin variable to a Microsoft Entra Group in your domain that represents the application administrators
+    - Update the location to an Azure Region of your choice
+3. This project is expects resources created by [wrgcli](https://github.com/westridgegroup/wrgcli) project's OpenTofuAzureBootstrap.sh script to exist.	The script has been imported locally to this repo for now.
+4. From bash shell: az login (make sure you are in the correct subscription)
+5. From bash shell: source ./wrgcli.sh 
+6. From bash shell: tofu_setup ./env/dev.tfvars
+7. From bash shell: tofu_plan 	
+8. From bash shell: tofu_apply 
 
 ### Notes: 
 This project follows the standard West Ridge Group OpenTofu famework, state container name and state key information is in the tfvars file. \

@@ -2,7 +2,7 @@
 /* Logging Storage */
 /*******************/
 resource "azurerm_storage_account" "logging" {
-  name                     = "${local.name2}logging"
+  name                     = "${local.name2}logging${random_string.storage.id}" #24 character limit
   resource_group_name      = azurerm_resource_group.logging.name
   location                 = azurerm_resource_group.logging.location
   account_tier             = "Standard"
@@ -43,7 +43,7 @@ resource "azurerm_private_endpoint" "logging" {
 /*******************/
 
 resource "azurerm_storage_account" "raw" {
-  name                     = "${local.name2}raw"
+  name                     = "${local.name2}raw${random_string.storage.id}"
   resource_group_name      = azurerm_resource_group.raw.name
   location                 = azurerm_resource_group.raw.location
   account_tier             = "Standard"
@@ -84,7 +84,7 @@ resource "azurerm_private_endpoint" "raw" {
 /*******************/
 
 resource "azurerm_storage_account" "refined" {
-  name                     = "${local.name2}refined"
+  name                     = "${local.name2}refined${random_string.storage.id}"
   resource_group_name      = azurerm_resource_group.refined.name
   location                 = azurerm_resource_group.refined.location
   account_tier             = "Premium"

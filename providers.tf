@@ -7,3 +7,7 @@ provider "azurerm" {
 }
 provider "azapi" {
 }
+
+provider "random" {
+  # Configuration options
+}

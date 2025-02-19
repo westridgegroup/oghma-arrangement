@@ -14,7 +14,7 @@ resource "azurerm_databricks_workspace" "main" {
 #    compliance_security_profile_enabled = false #Does not match design
 #   }
   custom_parameters {
-    storage_account_name = "${local.name2}dbxworkspace"
+    storage_account_name = "${local.name2}dbxws${random_string.storage.id}"
     storage_account_sku_name = "Standard_GRS"
     public_subnet_name= azurerm_subnet.databricks_external.name
     private_subnet_name = azurerm_subnet.databricks_internal.name
