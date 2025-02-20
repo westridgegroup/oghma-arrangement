@@ -57,6 +57,18 @@ resource "azurerm_storage_account" "raw" {
   is_hns_enabled = true 
   local_user_enabled = false
   allow_nested_items_to_be_public = false
+  blob_properties {
+    
+    versioning_enabled = false
+    change_feed_enabled = false
+    container_delete_retention_policy {
+      days=360
+    }
+    delete_retention_policy {
+      days=360
+    }
+ 
+  }
 
   network_rules {
     default_action             = "Deny"
