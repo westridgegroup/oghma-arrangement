@@ -19,8 +19,14 @@ variable "env" {
 }
 
 variable "admin" {
-  type        = list
+  type        = string
   description = "overall resource administrator, this is not owner at the subscription level, but specific RBACs at the RG level"
+}
+
+variable "retention_days" {
+  type = number
+  description = "The number of days blobs and containers hould be retained"
+  default = 7
 }
 
 variable "sku" {
