@@ -19,7 +19,7 @@ resource "azurerm_storage_account" "logging" {
 
   network_rules {
     default_action             = "Deny"
-    ip_rules                   = ["108.4.72.254","100.7.89.162"] #Does not match design, temp until Bastion is in place
+    ip_rules                   = var.local_ip #Does not match design, temp until Bastion is in place
   }
 
 }
@@ -72,7 +72,7 @@ resource "azurerm_storage_account" "raw" {
 
   network_rules {
     default_action             = "Deny"
-    ip_rules                   = ["108.4.72.254"]
+    ip_rules                   = var.local_ip
   }
 
 }
@@ -113,7 +113,7 @@ resource "azurerm_storage_account" "refined" {
 
   network_rules {
     default_action             = "Deny"
-    ip_rules                   = ["108.4.72.254"]
+    ip_rules                   = var.local_ip
   }
 
 }

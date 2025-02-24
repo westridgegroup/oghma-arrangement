@@ -29,10 +29,9 @@ variable "retention_days" {
   default = 7
 }
 
-variable "sku" {
-  type        = string
-  description = "The Fabric SKU F2 to F128"
-  default     = "F2"
+variable "local_ip" {
+  type        = list
+  description = "The teams or admins ip addresses for white listing"
 }
 
 variable "location" {
