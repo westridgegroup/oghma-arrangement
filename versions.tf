@@ -6,9 +6,6 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">=4.0.0"
     }
-    azapi = {
-      source = "azure/azapi"
-    }
     random = {
       source = "hashicorp/random"
       version = "3.6.3"
@@ -16,6 +13,10 @@ terraform {
     azuread = {
       source = "hashicorp/azuread"
       version = "3.1.0"
+    }
+    databricks = {
+      source = "databricks/databricks"
+      version = ">=1.66.0"
     }
 
   }

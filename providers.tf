@@ -5,7 +5,11 @@ provider "azurerm" {
     }
   }
 }
-provider "azapi" {
+
+provider "azuread" {
+}
+
+provider "databricks" {
 }
 
 provider "random" {

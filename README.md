@@ -4,8 +4,6 @@ OpenTofu for an Azure based Analytics and Reporting Platform \
 ## Overivew
 This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics. Further solution information can be found in the documentation folders [README.md](./documentation/README.md)
 
-### version 0.0.1
-
 ### Conceptual Diagram
 1. Logic apps identifies a new email grabbing the email identifiers and that of any attachments
 2. Logic apps places the email metadata, body, and attachments in the raw storage account
@@ -33,6 +31,12 @@ This project assumes an existing MS Entra ID with specific security groups alrea
 This project assumes an existing Unity Catalog in the region that the databricks workspace will be created in. ]
 The user_groups variable is read at execution time to populate the access control policy \
 [OpenTofu](https://opentofu.org) open source fork of Terraform, we switch to OpenTofu due to the [Terraform licensing change](https://www.hashicorp.com/en/license-faq) in August 10th of 2023.
+
+### Version: 0.4.1
+This project uses semantic versioning \
+Anytime a provider is added it will increment the minor release \
+Most incremental changes will result in patch increment \
+Any breaking change will result in a version increment
 
 ## Platform Details
 The Databricks workspace, key vault, storage and logic app are all wrapped in a vnet and do not all for external access directly from the internet.   All resource connectivity is via private endpoints with the except of Fabric which uses VNET Data Gateways.

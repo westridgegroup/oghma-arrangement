@@ -1,11 +1,11 @@
-variable "prefix" {
+variable "admin" {
   type        = string
-  description = "The prefix which should be used for all resources in this module"
-  default     = "aaa"
-  validation {
-    condition     = length(var.prefix) < 4 
-    error_message = "prefix must be less than 4 characters long"
-  }
+  description = "overall resource administrator, this is not owner at the subscription level, but specific RBACs at the RG level"
+}
+
+variable "devs" {
+  type = string
+  description = "Individuals who need developer access to the environment"
 }
 
 variable "env" {
@@ -16,17 +16,6 @@ variable "env" {
     condition     = length(var.env) < 4
     error_message = "env value must be less than 4 characters long"
   }
-}
-
-variable "admin" {
-  type        = string
-  description = "overall resource administrator, this is not owner at the subscription level, but specific RBACs at the RG level"
-}
-
-variable "retention_days" {
-  type = number
-  description = "The number of days blobs and containers hould be retained"
-  default = 7
 }
 
 variable "local_ip" {
@@ -40,7 +29,26 @@ variable "location" {
   default     = "eastus2"
 }
 
+variable "prefix" {
+  type        = string
+  description = "The prefix which should be used for all resources in this module"
+  default     = "aaa"
+  validation {
+    condition     = length(var.prefix) < 4 
+    error_message = "prefix must be less than 4 characters long"
+  }
+}
 
+variable "retention_days" {
+  type = number
+  description = "The number of days blobs and containers hould be retained"
+  default = 7
+}
+
+variable "users" {
+  type = string
+  description = "Individuals who are users of the environment"  
+}
 # Standard Tags
 variable "tags" {
   default     = {}
