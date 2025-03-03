@@ -49,7 +49,35 @@ variable "users" {
   type = string
   description = "Individuals who are users of the environment"  
 }
-# Standard Tags
+
+
+
+# wrgcli managed variables
+variable "arm_client_id" {
+  default=""
+  description = "The arm client id coming in from a environment variable"
+  type = string
+}
+
+variable "arm_client_secret" {
+  default=""
+  description = "The arm client secret coming in from a environment variable"
+  type = string
+}
+
+variable "arm_tenant_id" {
+  default=""
+  description = "The Azure tenant id coming in from a environment variable"
+  type = string
+}
+
+variable "databricks_account_id" {
+  default=""
+  description = "Databricks Account Id coming in from a environment variable"
+  type = string
+}
+
+
 variable "tags" {
   default     = {}
   description = "The generic tags for this project that go on all resources"

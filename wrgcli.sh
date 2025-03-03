@@ -14,7 +14,7 @@
 #        - ARM_TENANT_ID																									#
 #        - ARM_ACCESS_KEY																									#
 #																															#
-#VERSION 3.0.0																												#
+#VERSION 3.0.1																												#
 #																															#
 #EXAMPLE																													#
 #    source ./wrgcli.sh																			#
@@ -179,7 +179,18 @@ if [ -z "$ARM_ACCESS_KEY" ]
 		echo "${YELLOW}SUCCESS!${NC}"
 fi
 
+echo "Loading DATABRICKS_ACCOUNT_ID..."
+DATABRICKS_ACCOUNT_ID=$(az keyvault secret show --vault-name $KEY_VAULT_NAME --name DATABRICKS-ACCOUNT-ID --query "value" --output tsv)
+if [ -z "$DATABRICKS_ACCOUNT_ID" ]
+	then 
+		printf '%s\n' "FAILURE! Azure Key Vault missing secret DATABRICKS_ACCOUNT_ID" >&2
+	else
+		echo "${YELLOW}SUCCESS!${NC}"
+fi
+
 }
+
+
 
 function terra_get_backend_values() {
 
@@ -196,6 +207,7 @@ function terra_output_info() {
 	echo "ARM_CLIENT_SECRET:   HIDDEN!"
 	echo "ARM_TENANT_ID:       $ARM_TENANT_ID"
 	echo "ARM_ACCESS_KEY:      $ARM_ACCESS_KEY"
+	echo "DATABRICKS_ACCOUNT_ID:" $DATABRICKS_ACCOUNT_ID
 	echo "************************************************************************"
 	echo ""
 	export ARM_CLIENT_ID
@@ -203,6 +215,11 @@ function terra_output_info() {
 	export ARM_TENANT_ID
 	export ARM_SUBSCRIPTION_ID
 	export ARM_ACCESS_KEY
+	export TF_VAR_arm_client_id=$ARM_CLIENT_ID
+	export TF_VAR_arm_client_secret=$ARM_CLIENT_SECRET
+	export TF_VAR_arm_tenant_id=$ARM_TENANT_ID
+	export TF_VAR_databricks_account_id=$DATABRICKS_ACCOUNT_ID
+
 }
 
 function tofu_init() {

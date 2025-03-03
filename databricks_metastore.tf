@@ -1,7 +1,9 @@
-data "databricks_metastores" "all" {}
+data "databricks_metastore" "location" {
+    name="dataverse2"
+}
 
-output "all_metastores" {
-  value = data.databricks_metastores.all.ids
+output "metastore_id" {
+  value = data.databricks_metastore.location.id
 }
 
 
