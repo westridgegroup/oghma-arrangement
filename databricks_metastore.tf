@@ -25,12 +25,11 @@ resource "databricks_mws_permission_assignment" "add_admin_group" {
   permissions  = ["ADMIN"]
 }
 
-
-
 module "databricks_group_users" {
     for_each = toset(data.azuread_group.admin.members)
     source = "./databricks_group_users"
     user_object_id = "${each.key}"
+    group_id = databricks_group.admin.id
 }
 
 output "databricks_group_users_output" {
