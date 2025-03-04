@@ -1,14 +1,12 @@
 data "databricks_metastore" "location" {
-    name="dataverse2"
+    region=azurerm_resource_group.databricks.location
 }
 
 output "metastore_id" {
   value = data.databricks_metastore.location.id
 }
 
-
-
-#resource "databricks_metastore_assignment" "this" {
-#  metastore_id = databricks_metastore.this.id
-#  workspace_id = local.workspace_id
-#}
+resource "databricks_metastore_assignment" "main" {
+  metastore_id = data.databricks_metastore.location.id
+  workspace_id = azurerm_databricks_workspace.main.workspace_id
+}
