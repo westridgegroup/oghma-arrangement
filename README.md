@@ -1,11 +1,13 @@
 # oghma-arrangement
-OpenTofu for an Azure based Analytics and Reporting Platform 
+Oghma-Arrangement is an Infrastructure as Code Azure based Analytics and Reporting Platform 
 
 ## TO DO:
 - Need to update the wrgcli to create the DATABRICKS-ACCOUNT-ID
 
 ## Overivew
-This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics. Further solution information can be found in the documentation folders [README.md](./documentation/README.md)
+This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics. Further solution information can be found in the documentation folders [README.md](./documentation/README.md) \
+
+[OpenTofu](https://opentofu.org) is an open source fork of Terraform, we switch to OpenTofu due to the [Terraform licensing change](https://www.hashicorp.com/en/license-faq) in August 10th of 2023.
 
 ### Conceptual Diagram
 1. Logic apps identifies a new email grabbing the email identifiers and that of any attachments
@@ -28,15 +30,14 @@ This repository is a complete set of code to stand up an Azure based Analytics a
 7. From bash shell: tofu_plan 	
 8. From bash shell: tofu_apply 
 
-### Notes: 
-This project follows the standard West Ridge Group OpenTofu famework, state container name and state key information is in the tfvars file. \
-This project assumes an existing MS Entra ID with specific security groups already exists \
+### Assumptions: 
+This project assumes the use of wrgcli specifically the OpenTofu setup that is part of that client \
+This project assumes an existing MS Entra ID with three specific security groups already exists \
 This project assumes an existing Metastore/Unity Catalog in the region that the databricks workspace will be created in. \
-This project assumes you have updated your wrg OpenTufu/Terraform Key Vault with the correct DATABRICKS ACCOUNT ID \
-The user_groups variable is read at execution time to populate the access control policy \
-[OpenTofu](https://opentofu.org) open source fork of Terraform, we switch to OpenTofu due to the [Terraform licensing change](https://www.hashicorp.com/en/license-faq) in August 10th of 2023.
+This project assumes you have updated your wrg OpenTufu/Terraform Key Vault with the correct DATABRICKS ACCOUNT ID
 
-### Version: 0.4.1
+
+### Version: 0.4.2
 This project uses semantic versioning \
 Anytime a provider is added it will increment the minor release \
 Most incremental changes will result in patch increment \
