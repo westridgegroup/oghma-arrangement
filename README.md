@@ -1,9 +1,6 @@
 # oghma-arrangement
 Oghma-Arrangement is an Infrastructure as Code Azure based Analytics and Reporting Platform 
 
-## TO DO:
-- Need to update the wrgcli to create the DATABRICKS-ACCOUNT-ID
-
 ## Overivew
 This repository is a complete set of code to stand up an Azure based Analytics and Reporting platform. The platform design allows for both batch and realtime processing of data containing all of the necessary resources for, data retrieval, reporting, analytics, machine learning, and notification. The platform is deployed in a way that encapsulates and secures the resources making it acceptable to the most robust security requirements. The initial use case for this platform automated analytics and reporting with request originating from outside of the platform itself. Email is a generally accepted as part of business workflows so the solution leverages it in the solution design. The idea is that there is business value being able to seamless add analytics into existing workflows with little to no changes in the existing process from a tooling perspective except for a minimal change in forwarding emails to a specific mailbox to add additional analytics. Further solution information can be found in the documentation folders [README.md](./documentation/README.md) \
 

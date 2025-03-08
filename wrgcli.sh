@@ -224,10 +224,10 @@ function terra_output_info() {
 
 function tofu_init() {
 	
-	TERRAFORM_INIT="tofu init --backend-config='storage_account_name=$BACKEND_STORAGE_ACCOUNT' --backend-config='key=$STATE_KEY' --backend-config='container_name=$STATE_CONTAINER_NAME' --reconfigure"
-	echo "Running: $TERRAFORM_INIT"
+	TOFU_INIT="tofu init --backend-config='storage_account_name=$BACKEND_STORAGE_ACCOUNT' --backend-config='key=$STATE_KEY' --backend-config='container_name=$STATE_CONTAINER_NAME' --reconfigure"
+	echo "Running: $TOFU_INIT"
 
-	bash -c $TERRAFORM_INIT
+	bash -c $TOFU_INIT
 
 }
 #####################
