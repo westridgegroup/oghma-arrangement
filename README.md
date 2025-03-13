@@ -180,5 +180,10 @@ If we need additional networks that talk to one another they would take the next
         - storage_account_name = using the storage account prefix plus databricksdefault
         - storage_account_sku_name = "PremiumLRS"
 
+### To Do:
+- Storage Accounts linked to external locations in databricks
+- SPN to work as Unity Catalog Access
+- Private Endpoints in Unity Catalog for Serverless
+- Unity Catalog Catalog for project
 
  

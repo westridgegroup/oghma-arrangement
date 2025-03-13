@@ -1,3 +1,6 @@
+# VS Code
+*.code-workspace
+
 # Local .terraform directories
 **/.terraform/*
 
