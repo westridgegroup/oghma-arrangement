@@ -23,6 +23,12 @@ resource "azurerm_databricks_workspace" "main" {
     private_subnet_network_security_group_association_id = azurerm_network_security_group.databricks_private.id
     no_public_ip = true
   }
+
+  depends_on = [
+    azurerm_subnet_network_security_group_association.databricks_public,
+    azurerm_subnet_network_security_group_association.databricks_private,
+  ]
+
   tags = local.main_tags
 }
 

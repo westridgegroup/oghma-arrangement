@@ -41,3 +41,9 @@ resource "azurerm_resource_group" "databricks" {
   tags = local.main_tags
 }
 
+resource "azurerm_resource_group" "nat_gateway" {
+  name     = "${local.name}-nat-gateway-rg"
+  location = var.location
+  tags = local.main_tags
+}
+

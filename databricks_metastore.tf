@@ -18,13 +18,13 @@ resource "databricks_group" "admin" {
   allow_cluster_create       = true
   allow_instance_pool_create = true
 }
-
+/*
 resource "databricks_mws_permission_assignment" "add_admin_group" {
   workspace_id = azurerm_databricks_workspace.main.workspace_id
   principal_id = databricks_group.admin.id
   permissions  = ["ADMIN"]
 }
-
+*/
 module "databricks_group_users" {
     for_each = toset(data.azuread_group.admin.members)
     source = "./databricks_group_users"
